@@ -1,27 +1,41 @@
 const express = require("express");
-const fs = require("fs");
+const routes = require("./routes");
+const sequelize = require("./config/connection");
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
-const consoleTable = require("console.table");
-const app = express();
-const newUser = [];
 
-const connection = mysql.createConnection({
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// turn on routes
+app.use(routes);
+
+// turn on connection to db and server
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log("Now listening"));
+});
+
+//const newUser = [];
+
+/*const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
   password: "password",
   database: "dogshelter_db",
-});
+});*/
 
 //connect my connection to mysql database
 
-connection.connect(function (err) {
-  if (err) throw err;
-  userProfileQuest();
-});
+//connection.connect(function (err) {
+// if (err) throw err;
+// userProfileQuest();
+//});
 
-function userProfile() {
+/*function userProfile() {
   inquirer
     .prompt([
       {
@@ -59,4 +73,4 @@ function userProfile() {
       userArr.push(newUser);
       userProfile();
     });
-}
+}*/
