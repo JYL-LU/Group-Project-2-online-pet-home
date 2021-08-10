@@ -6,6 +6,14 @@ class Pets extends Model {}
 // define table columns and configuration
 Pets.init(
   {
+    image_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isURL: true,
+      },
+    },
+
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
