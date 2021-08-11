@@ -80,7 +80,7 @@ router.post("/login", (req, res) => {
 
 // PUT /api/users/1
 router.put("/:id", (req, res) => {
-  // expects {username: "", email: "", password: ""}
+  // {username: "", email: "", password: ""}
 
   User.update(req.body, {
     individualHooks: true,
