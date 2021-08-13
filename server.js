@@ -1,16 +1,41 @@
+const path = require("path");
 const express = require("express");
+const session = require("express-session");
 const routes = require("./routes");
-const sequelize = require("./config/connection");
-const mysql = require("mysql2");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// importing the connection to Sequelize from config/connection.js
+const sequelize = require("./config/connection");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+
+// set up Handlebars.js as your app's template engine of choice:
+const helpers = require("./utils/helpers");
+const exphbs = require("express-handlebars");
+const hbs = exphbs.create({});
+
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+
+const sess = {
+  secret: "Super secret secret",
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize,
+  }),
+};
+
+app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(routes);
 
 // turn on routes
-app.use(routes);
+app.use(require("./routes/"));
 
 // turn on connection to db and server
 sequelize.sync({ force: false }).then(() => {
