@@ -11,17 +11,20 @@ Post.init(
       primaryKey: true,
       autoIncrement: true,
     },
+
     title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    post_url: {
+
+    post_text: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isURL: true,
+        len: [400],
       },
     },
+
     user_id: {
       type: DataTypes.INTEGER,
       references: {
