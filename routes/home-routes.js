@@ -1,12 +1,12 @@
 // implement the CRUD action
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment, Pets } = require("../models");
+const { Post, User, Comment } = require("../models");
 
 // //////////////////////////////// at "localhost:3001" path, render homepage handlebars with following info
 router.get("/", (req, res) => {
-  Pets.findAll({
-    attributes: ["id", "pet_name", "birthday", "health_condition", "gender", "created_at"],
+  Post.findAll({
+    attributes: ["id", "pet_name", "age", "health_condition","gender", "address", "created_at"],
     include: [
       {
         model: Comment,
@@ -22,12 +22,12 @@ router.get("/", (req, res) => {
       },
     ],
   })
-    .then((dbPetsData) => {
+    .then((dbPostData) => {
       // console.log(dbPostData);
-      const posts = dbPetsData.map((pet) => pet.get({ plain: true }));
-      console.log(pets);
+      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      console.log(posts);
       // -------------------------------------------------------------------Render homepage handlebars
-      res.render("homepage", { pets, loggedIn: req.session.loggedIn });
+      res.render("homepage", { posts, loggedIn: req.session.loggedIn });
       // res.render("homepage", { posts });
     })
     .catch((err) => {

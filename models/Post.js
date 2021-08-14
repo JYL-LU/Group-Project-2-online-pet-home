@@ -12,17 +12,33 @@ Post.init(
       autoIncrement: true,
     },
 
-    title: {
+    pet_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
 
-    post_text: {
+    age: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 10,
+      validate: {
+        isNumeric: true,
+      },
+    },
+
+    health_condition: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [400],
-      },
+    },
+
+    gender: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    address: {
+      type: DataTypes.TEXT,
+      allowNull: false,
     },
 
     user_id: {

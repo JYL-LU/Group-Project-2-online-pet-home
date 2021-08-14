@@ -1,39 +1,39 @@
 const User = require("./User");
 const Post = require("./Post");
-const Pets = require("./Pets");
 const Comment = require("./Comment");
-const Like = require("./Like");
 
+// user has many posts
 User.hasMany(Post, {
   foreignKey: "user_id",
 });
 
+// post belongs to one user
 Post.belongsTo(User, {
   foreignKey: "user_id",
+  onDelete: "cascade",
 });
 
-Comment.belongsTo(User, {
-  foreignKey: "user_id",
-});
-
+// comment belongs to one post
 Comment.belongsTo(Post, {
   foreignKey: "post_id",
+  onDelete: "cascade",
 });
 
+// comment belongs to one post
+Comment.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "cascade",
+});
+
+// user has many comments
 User.hasMany(Comment, {
   foreignKey: "user_id",
+  onDelete: "cascade",
 });
 
+// post has many comments
 Post.hasMany(Comment, {
   foreignKey: "post_id",
+  onDelete: "cascade",
 });
-
-Comment.hasMany(Like, {
-  foreignKey: "post_id",
-});
-
-Like.belongsTo(Post, {
-  foreignKey: "post_id",
-});
-
-module.exports = { User, Post, Pets, Comment, Like };
+module.exports = { User, Post, Comment };

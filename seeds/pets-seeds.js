@@ -1,6 +1,6 @@
-const { Pet } = require("../models/Pets");
+const { Pets } = require("../models/Pets");
 
-const petData = [
+const petsData = [
   {
     image_url: "",
     pet_name: "Cookie",
