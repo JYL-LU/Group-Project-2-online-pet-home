@@ -35,7 +35,7 @@ Pets.init(
       },
     },
 
-    heath_condition: {
+    health_condition: {
       type: DataTypes.STRING,
       allowNull: false,
     },

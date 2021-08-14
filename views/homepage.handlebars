@@ -1,12 +1,12 @@
 <article class="post">
 
-  {{#each posts as |post| }}
+  {{#each pets as |pet| }}
     <div class="card">
       <div class="card-header">
-        <h4><a class="link" href="/post/{{id}}">{{title}}</a></h4>
+        <h4><a class="link" href="/pets/{{id}}">{{pet_name}}</a></h4>
         <p>Posted by {{user.username}} on {{created_at}}</p>
       </div>
-      <p class="card-body">{{content}}</p>
+      <p class="card-body">The cute pet born at {{birthday}}, and the health is {{health_condition}}</p>
     </div>
   {{/each}}
 
