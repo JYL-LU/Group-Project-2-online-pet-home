@@ -7,7 +7,16 @@ const withAuth = require("../../utils/auth");
 // ////////////////////////////////GET /api/posts -------------------------------------------------------find all pet
 router.get("/", (req, res) => {
   Post.findAll({
-    attributes: ["id", "pet_name", "age", "health_condition","gender", "address", "created_at"],
+    attributes: [
+      "id",
+      "pet_name",
+      "age",
+      "health_condition",
+      "gender",
+      "address",
+      "image_url",
+      "created_at",
+    ],
     order: [["created_at", "DESC"]],
     include: [
       {
@@ -37,7 +46,16 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ["id", "pet_name", "age", "health_condition","gender", "address", "created_at"],
+    attributes: [
+      "id",
+      "pet_name",
+      "age",
+      "health_condition",
+      "gender",
+      "address",
+      "image_url",
+      "created_at",
+    ],
     include: [
       {
         model: User,

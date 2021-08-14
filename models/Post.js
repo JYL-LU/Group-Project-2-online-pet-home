@@ -41,6 +41,14 @@ Post.init(
       allowNull: false,
     },
 
+    image_url: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isURL: true,
+      },
+    },
+
     user_id: {
       type: DataTypes.INTEGER,
       references: {
