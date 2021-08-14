@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { Post, User } = require("../../models");
+const sequelize = require("../../config/connection");
+const { Post, User, Comment, Like } = require("../../models");
 
 router.get("/", (req, res) => {
   Post.findAll({

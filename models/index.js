@@ -36,4 +36,8 @@ Like.belongsTo(Post, {
   foreignKey: "post_id",
 });
 
+Like.belongsTo(Comment, {
+  foreignKey: "comment_id",
+});
+
 module.exports = { User, Post, Pets, Comment, Like };
