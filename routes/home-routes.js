@@ -6,7 +6,7 @@ const { Post, User, Comment } = require("../models");
 // //////////////////////////////// at "localhost:3001" path, render homepage handlebars with following info
 router.get("/", (req, res) => {
   Post.findAll({
-    attributes: ["id", "pet_name", "age", "health_condition","gender", "address", "image_url","created_at"],
+    attributes: ["id", "title", "content", "address", "image_url","created_at"],
     include: [
       {
         model: Comment,

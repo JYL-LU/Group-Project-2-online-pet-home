@@ -9,10 +9,8 @@ router.get("/", (req, res) => {
   Post.findAll({
     attributes: [
       "id",
-      "pet_name",
-      "age",
-      "health_condition",
-      "gender",
+      "title",
+      "content",
       "address",
       "image_url",
       "created_at",
@@ -48,10 +46,8 @@ router.get("/:id", (req, res) => {
     },
     attributes: [
       "id",
-      "pet_name",
-      "age",
-      "health_condition",
-      "gender",
+      "title",
+      "content",
       "address",
       "image_url",
       "created_at",

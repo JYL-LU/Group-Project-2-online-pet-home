@@ -12,38 +12,24 @@ Post.init(
       autoIncrement: true,
     },
 
-    pet_name: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-
-    age: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 10,
-      validate: {
-        isNumeric: true,
-      },
-    },
-
-    health_condition: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-
-    gender: {
-      type: DataTypes.STRING,
+    
+    content: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
 
     address: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
 
     image_url: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         isURL: true,
       },

@@ -24,18 +24,18 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: Post,
-        attributes: ["id", "pet_name", "age", "health_condition","gender", "address", "image_url", "created_at"],
+        attributes: ["id", "title", "content", "address", "image_url", "created_at"],
       },
       {
         model: Post,
-        attributes: ["pet_name"],
+        attributes: ["title"],
       },
       {
         model: Comment,
         attributes: ["id", "comment_text", "created_at"],
         include: {
           model: Post,
-          attributes: ["pet_name"],
+          attributes: ["title"],
         },
       },
     ],
@@ -58,7 +58,6 @@ router.post("/", (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
   User.create({
     username: req.body.username,
-    email: req.body.email,
     password: req.body.password,
   })
     // express-session middleware that track user activities
@@ -67,7 +66,6 @@ router.post("/", (req, res) => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
-        req.session.email = dbUserData.email;
         req.session.loggedIn = true;
 
         res.json(dbUserData);
