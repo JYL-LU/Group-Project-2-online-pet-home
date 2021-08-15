@@ -1,0 +1,15 @@
+<article class="post">
+
+  {{#each posts as |post| }}
+    <div class="card">
+      <div class="card-header">
+        <h4><a class="link" href="/post/{{id}}">{{title}}</a></h4>
+        <p>Posted by {{user.username}} on {{created_at}}</p>
+      </div>
+      <p class="card-body">{{content}}</p>
+      <p class="card-body">You can feed it at: {{address}}</p>
+      <img src= {{ image_url }}></img>
+    </div>
+  {{/each}}
+
+</article>

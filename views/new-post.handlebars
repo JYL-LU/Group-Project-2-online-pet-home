@@ -1,0 +1,20 @@
+<div class="card">
+    <h3 class="card-header">Create New Post</h3>
+    <form class="card-body new-post-form" id="new-post-form">
+        
+        <label for="post-title" class="form-label">Dog Name</label>
+        <input type="text" id="post-title" name="post-title" class="form-input" />
+
+
+        <label class="form-label" for="content">Health Condition</label>
+        <input id="content" name="content" class="form-input" />
+
+        {{!-- <label class="form-label" for="content">address</label>
+        <input id="content" name="address" class="form-input" /> --}}
+
+        <button type="submit" class="btn">Create</button>
+    </form>
+</div>
+
+{{!-- add-post.js to active new-post form --}}
+<script src="/javascript/add-post.js"></script>
